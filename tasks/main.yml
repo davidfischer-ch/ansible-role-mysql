@@ -28,7 +28,7 @@
         dest: /etc/mysql/my.cnf
         owner: root
         group: root
-        mode: 0600
+        mode: '600'
       notify: restart mysql
 
     - name: Configure socket for Debian
@@ -36,7 +36,7 @@
         dest: /etc/mysql/debian.cnf
         owner: root
         group: root
-        mode: 0600
+        mode: '600'
         regexp: '^socket\s+=\s+\S+'
         replace: 'socket = {{ mysql_socket_file }}'
       when: ansible_os_family == 'Debian'
@@ -58,7 +58,7 @@
         dest: /root/.my.cnf
         owner: root
         group: root
-        mode: 0600
+        mode: '600'
 
     - name: Configure MySQL root password
       mysql_user:
